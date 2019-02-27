@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <div id="div1", style="font-family:verdana;font-size: 20px;text-align:center">
+        <h1 class = "a">Mutation</h1>
+        <h2 class = "a">Parent</h2>
+        <svg height="100" width="100">
+            <circle cx="50" cy="50" r="3" stroke="red" stroke-width="3" fill="#cc2116" />
+            <text x="20" y="20" font-family="sans-serif"  font-size="20px" fill="black">0.03</text>
+        </svg>
+        <p class ="a" >( x * y ) + ( 1 / 2 )</p>
+
+
+
+    </div>
+
+    <div id="div2", style="font-family:verdana;font-size: 20px;text-align:center">
+        <p style="text-align:center;font-size: 20px;font-family:verdana">
+            <a href="selection2.html">Click here to see what happens next</a>
+        </p>
+        <h2 class ="a">Randomly Generated Tree</h2>
+        <svg height="100" width="100">
+            <circle cx="50" cy="50" r="8" stroke="#7c6cff" stroke-width="3" fill="#7c6cff" />
+            <text x="20" y="20" font-family="sans-serif"  font-size="20px" fill="black">0.1</text>
+        </svg>
+
+        <p class ="a">x + ( 2 - y )</p>
+
+    </div>
+    <hr>
+    <div id="div3", class="hidden" style="font-family:verdana;font-size: 20px;text-align:center">
+        <p class ="a"></p>
+
+
+    </div>
+
+    <div id="div4", style="font-family:verdana;font-size: 20px;text-align:center">
+
+        <h2 class ="a">Offspring</h2>
+        <p class ="a">A random tree has been generated</p>
+        <p class ="a">and the parent tree has undergone point mutation </p>
+        <p class ="a">to 'breed' the next generation.</p>
+        <p class = "a">( x * y ) + ( ( y + 2 ) * ( x / 2 ) )</p>
+    </div>
+
+</head>
+<style>
+    .hidden { display: none; }
+
+    .node circle {
+        fill: #cc2116;
+        stroke: rgba(197, 15, 0, 0.97);
+        stroke-width: 5px;
+    }
+    .node1 circle {
+        fill: #7c6cff;
+        stroke: rgba(124, 108, 255, 0.97);
+        stroke-width: 5px;
+    }
+    .node {
+        font: 35px sans-serif;
+    }
+    .node1 {
+        font: 35px sans-serif;
+    }
+    .link {
+        fill: none;
+        stroke: #cc2116;
+        stroke-width: 1px;
+    }
+    .link1 {
+        fill: none;
+        stroke: #7c6cff;
+        stroke-width: 1px;
+    }
+    p.a {
+        font-family: Tahoma, Geneva, sans-serif;
+        font-size: 90%;
+
+    }
+    h2.a {
+        font-family: Tahoma, Geneva, sans-serif;
+        font-size: 140%;
+
+    }
+    div { width: 50%; height: 50%; float: left; }
+    #div1 { background: #FFFFFF; }
+    #div2 { background: #FFFFFF; }
+    #div3 { background: #FFFFFF; }
+    #div4 { background: #FFFFFF;
+        display: block;}
+
+    .button {
+        background-color: black;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+    .button:hover {
+        background-color: white; /* Green */
+        color: black;
+        border: 2px solid black;}
+    a:link, a:visited {
+        background-color: black;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    a:hover, a:active {
+        background-color: white;
+        color: black;
+        border: 2px solid black;
+    }
+
+</style>
+<body>
+
+<button id="show" class="button">Show the Offspring </button>
+<button id="show1" class="button">See information</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js">
+</script>
+<script>
+
+    var Parent1 = {
+
+        "name": "+",
+        "children": [{
+
+            "name": "*",
+            "children": [{
+
+                "name":"x"
+            }, {
+                "name":"y"
+            }]
+
+        },
+            {
+                "name": "/",
+                "children": [{
+
+                    "name": "1"
+                }, {
+                    "name": "2"
+                }]
+
+            }]
+    };
+
+    var Parent2 = {
+        "name": "*",
+        "children": [{
+            "name": "+",
+            "children": [{
+                "name": "y"
+            },{
+                "name": "2"
+            }]
+
+
+        },
+            {
+                "name": "/",
+                "children": [{
+
+                    "name":"x"
+                }, {
+                    "name":"2"
+                }]}
+                ]};
+
+
+    var Offspring = {
+        "name": "+",
+        "value": 6,
+        "type": "#cc2116",
+        "level": "#cc2116",
+        "children": [{
+
+            "name": "*",
+            "value": 6,
+            "type": "#cc2116",
+            "level": "#cc2116",
+            "children": [{
+
+                "name": "x",
+                "value": 6,
+                "type": "#cc2116",
+                "level": "#cc2116"
+            }, {
+                "name": "y",
+                "value": 6,
+                "type": "#cc2116",
+                "level": "#cc2116"
+            }]
+
+        },
+            {
+                "name": "*",
+                "value": 6,
+                "type": "#7c6cff",
+                "children": [{
+
+                    "name": "+",
+                    "value": 6,
+                    "type": "#7c6cff",
+                    "level": "#7c6cff",
+                    "children": [{
+                        "name": "y",
+                        "value": 6,
+                        "type": "#7c6cff",
+                        "level": "#7c6cff"
+                    },{
+                        "name": "2",
+                        "value": 6,
+                        "type": "#7c6cff",
+                        "level": "#7c6cff"
+
+                    }]
+                }, {
+                    "name": "/",
+                    "value": 6,
+                    "type": "#7c6cff",
+                    "level": "#7c6cff",
+                    "children": [{
+
+                        "name": "x",
+                        "value": 6,
+                        "type": "#7c6cff",
+                        "level": "#7c6cff"
+                    }, {
+                        "name": "2",
+                        "value": 6,
+                        "type": "#7c6cff",
+                        "level": "#7c6cff"
+                    }]
+
+                    }]
+                }]
+
+
+            };
+
+    var width = 400,
+        height = 300;
+
+    var tree = d3.layout.tree()
+        .size([height, width - 100]);
+
+    var diagonal = d3.svg.diagonal()
+        .projection(function(d) { return [d.y, d.x]; });
+
+    var svg = d3.select("#div1").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(40,0)");
+
+    var json = Parent1;
+    var nodes = tree.nodes(json),
+        links = tree.links(nodes);
+
+    var link = svg.selectAll("path.link")
+        .data(links)
+        .enter().append("path")
+        .attr("class", "link")
+        .attr("d", diagonal);
+
+    var node = svg.selectAll("g.node")
+        .data(nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+    node.append("circle")
+        .attr("r", 4.5);
+
+    node.append("text")
+        .attr("dy", function(d) { return d.children ? -8 : 8; })
+        .attr("dx", 3)
+        .attr("text-anchor", function(d) { return d.children ? "end" : "start"; })
+        .text(function(d) { return d.name; });
+
+
+
+    var tree2 = d3.layout.tree()
+        .size([height, width - 100]);
+
+    var diagonal2 = d3.svg.diagonal()
+        .projection(function(d2) { return [d2.y, d2.x]; });
+
+
+    var svg2 = d3.select("#div2").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(40,0)");
+
+    var json2 = Parent2;
+    var nodes2 = tree2.nodes(json2),
+        links2 = tree2.links(nodes2);
+
+    var link2 = svg2.selectAll("path.link1")
+        .data(links2)
+        .enter().append("path")
+        .attr("class", "link1")
+        .attr("d", diagonal2);
+
+    var node2 = svg2.selectAll("g.node1")
+        .data(nodes2)
+        .enter().append("g")
+        .attr("class", "node1")
+        .attr("transform", function(d2) { return "translate(" + d2.y + "," + d2.x + ")"; });
+
+    node2.append("circle")
+        .attr("r", 4.5);
+
+    node2.append("text")
+        .attr("dy", function(d2) { return d2.children ? -8 : 8; })
+        .attr("dx", 3)
+        .attr("text-anchor", function(d2) { return d2.children ? "end" : "start"; })
+        .text(function(d2) { return d2.name; });
+
+    var tree3 = d3.layout.tree()
+        .size([height, width - 100]);
+
+    var diagonal3 = d3.svg.diagonal()
+        .projection(function(d3) { return [d3.y, d3.x]; });
+
+
+    var svg3 = d3.select("#div3").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(40,0)");
+
+    var json3 = Offspring;
+    var nodes3 = tree3.nodes(json3),
+        links3 = tree3.links(nodes3);
+
+    var link3 = svg3.selectAll("path.link")
+        .data(links3)
+        .enter().insert("path", "g")
+        .attr("class", "link")
+        .style("stroke", function(d3) { return d3.target.level; })
+        .attr("d", diagonal);
+
+    var node3 = svg3.selectAll("g.node")
+        .data(nodes3)
+        .enter().append("g")
+        .attr("class", "node")
+        .attr("transform", function(d3) { return "translate(" + d3.y + "," + d3.x + ")"; });
+
+    node3.append("circle")
+        .attr("r", function(d) { return d.value; })
+        .style("stroke", function(d) { return d.type; })
+        .style("fill", function(d) { return d.level; });
+
+    node3.append("text")
+        .attr("dy", function(d3) { return d3.children ? -8 : 8; })
+        .attr("dx", 3)
+        .attr("text-anchor", function(d3) { return d3.children ? "end" : "start"; })
+        .text(function(d3) { return d3.name; });
+
+    $(function () {
+        $('#div3').hide('hidden');
+    });
+
+    $("#show").click(function(){
+        $("#div3").show();
+    });
+
+    $(function () {
+        $('#div4').hide('hidden');
+    });
+
+    $("#show1").click(function(){
+        $("#div4").show();
+    });
+</script>
+</body>
+</html>
