@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <form id="form1" name="form1" method="post" action="">
+    </form>
+
+</head>
+<style>
+    body{
+        background-color: #FFFFFF;
+    }
+    .dot {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: black;
+    }
+    a:link, a:visited {
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        background-color: #000000;
+        color: white;
+        padding: 15px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a:hover, a:active {
+        background-color: black;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        color: red;
+        padding: 15px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+    function createDot(x, y){
+        var elem = document.createElement("div");
+        elem.setAttribute("class", "dot");
+        elem.setAttribute("style", "left:"+x+"px;top:"+y+"px;");
+        document.getElementsByTagName("body")[0].appendChild(elem);
+        return elem;
+    }
+    //
+
+    var Count_Num_Of_Dots = 0;
+    //
+    function Add_Dot(){
+
+        if(Count_Num_Of_Dots < 1000000){
+
+            createDot(Math.floor(Math.random()*1900), Math.floor(Math.random()*870 + 40));
+            Count_Num_Of_Dots ++;
+            document.getElementById('num_of_dots').value ++;
+
+        }else{// stop timer
+
+            clearInterval(My_Timer_Var);
+
+        }
+    }
+    //
+
+    // Timer
+    var My_Timer_Var = setInterval(function(){ Add_Dot() }, .05);
+
+ </script>
+<p><a href="selection1.html">The Population is constantly evolving, let me show you how.</a></p>
+</body>
